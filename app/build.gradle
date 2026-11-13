@@ -1,0 +1,36 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.dk.tvlauncher'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.dk.tvlauncher'
+        minSdk 21
+        targetSdk 28          // Android TV 9 (Mi TV 4A)
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            signingConfig signingConfigs.debug   // personal use: debug key se sign (install ke liye kaafi)
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+// Koi external dependency nahi — sirf Android framework.
